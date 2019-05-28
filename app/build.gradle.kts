@@ -5,13 +5,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion(Config.compileSdk)
+    compileSdkVersion(Config.Android.compileSdkVersion)
     defaultConfig {
-        applicationId = "io.smallant.gamebook"
-        minSdkVersion(Config.minSdk)
-        targetSdkVersion(Config.targetSdk)
-        versionCode = Config.versionCode
-        versionName = Config.versionName
+        applicationId = Config.Android.applicationId
+        minSdkVersion(Config.Android.minSdkVersion)
+        targetSdkVersion(Config.Android.targetSdkVersion)
+        versionCode = Config.Android.versionCode
+        versionName = Config.Android.versionName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -25,10 +25,10 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation(Deps.kotlin_stdlib)
-    implementation(Deps.appCompat)
-    implementation(Deps.coreKtx)
-    implementation(Deps.constraintLayout)
+    implementation(Config.Libs.kotlin_stdlib)
+    implementation(Config.Libs.appCompat)
+    implementation(Config.Libs.coreKtx)
+    implementation(Config.Libs.constraintLayout)
 
     testImplementation("junit:junit:4.12")
     androidTestImplementation("androidx.test:runner:1.1.1")
