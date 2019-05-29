@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("android.extensions")
+    kotlin("kapt")
 }
 
 android {
@@ -25,10 +25,19 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation(Config.Libs.kotlin_stdlib)
+    // Kotlin + Coroutines
+    implementation(Config.Libs.kotlinStdlib)
+    implementation(Config.Libs.kotlinCoroutines)
+
     implementation(Config.Libs.appCompat)
     implementation(Config.Libs.coreKtx)
     implementation(Config.Libs.constraintLayout)
+    implementation(Config.Libs.lifecycleExtensions)
+
+    // Room
+    implementation(Config.Libs.roomRuntime)
+    kapt(Config.Libs.roomCompiler)
+    implementation(Config.Libs.roomKtx)
 
     testImplementation(Config.TestLibs.junit)
     androidTestImplementation(Config.TestLibs.runner)

@@ -24,11 +24,13 @@ object Config {
      */
 
     private const val kotlinVersion = "1.3.31"
+    private const val kotlinCoroutinesVersion = "1.2.1"
     private const val lifecycleExtensionsVersion = "2.0.0"
     private const val appCompatVersion = "1.0.2"
     private const val coreKtxVersion = "1.0.2"
     private const val constraintLayoutVersion = "1.1.3"
     private const val androidGradleVersion = "3.4.1"
+    private const val roomVersion = "2.1.0-beta01"
 
     private const val junitVersion = "4.12"
     private const val runnerVersion = "1.1.1"
@@ -40,12 +42,19 @@ object Config {
     }
 
     object Libs {
-        const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+        // Kotlin + Coroutines
+        const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+        const val kotlinCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion"
+
         const val appCompat = "androidx.appcompat:appcompat:$appCompatVersion"
         const val coreKtx = "androidx.core:core-ktx:$coreKtxVersion"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
-
         const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$lifecycleExtensionsVersion"
+
+        // Room
+        const val roomRuntime = "androidx.room:room-runtime:$roomVersion"
+        const val roomCompiler = "androidx.room:room-compiler:$roomVersion"
+        const val roomKtx = "androidx.room:room-ktx:$roomVersion"
     }
 
     object TestLibs {
