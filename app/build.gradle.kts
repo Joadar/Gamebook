@@ -30,7 +30,7 @@ dependencies {
     implementation(Config.Libs.coreKtx)
     implementation(Config.Libs.constraintLayout)
 
-    testImplementation("junit:junit:4.12")
-    androidTestImplementation("androidx.test:runner:1.1.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.1.1")
+    testImplementation(Config.TestLibs.junit)
+    androidTestImplementation(Config.TestLibs.runner)
+    androidTestImplementation(Config.TestLibs.espressoCore)
 }

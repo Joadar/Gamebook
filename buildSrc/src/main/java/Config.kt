@@ -30,6 +30,10 @@ object Config {
     private const val constraintLayoutVersion = "1.1.3"
     private const val androidGradleVersion = "3.4.1"
 
+    private const val junitVersion = "4.12"
+    private const val runnerVersion = "1.1.1"
+    private const val espressoVersion = "3.1.1"
+
     object BuildPlugins {
         const val androidGradle = "com.android.tools.build:gradle:$androidGradleVersion"
         const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
@@ -45,6 +49,8 @@ object Config {
     }
 
     object TestLibs {
-
+        const val junit = "junit:junit:$junitVersion"
+        const val runner = "androidx.test:runner:$runnerVersion"
+        const val espressoCore = "androidx.test.espresso:espresso-core:$espressoVersion"
     }
 }
