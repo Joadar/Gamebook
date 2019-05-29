@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
+    kotlin("android.extensions")
 }
 
 android {
@@ -32,12 +33,18 @@ dependencies {
     implementation(Config.Libs.appCompat)
     implementation(Config.Libs.coreKtx)
     implementation(Config.Libs.constraintLayout)
+
+    // Lifecyce
     implementation(Config.Libs.lifecycleExtensions)
+    implementation(Config.Libs.lifecycleViewModelKtx)
 
     // Room
     implementation(Config.Libs.roomRuntime)
     kapt(Config.Libs.roomCompiler)
     implementation(Config.Libs.roomKtx)
+
+    // Gson
+    implementation(Config.Libs.gson)
 
     testImplementation(Config.TestLibs.junit)
     androidTestImplementation(Config.TestLibs.runner)

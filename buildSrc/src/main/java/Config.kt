@@ -26,11 +26,13 @@ object Config {
     private const val kotlinVersion = "1.3.31"
     private const val kotlinCoroutinesVersion = "1.2.1"
     private const val lifecycleExtensionsVersion = "2.0.0"
+    private const val lifecycleViewModelKtxVersion = "2.2.0-alpha01"
     private const val appCompatVersion = "1.0.2"
     private const val coreKtxVersion = "1.0.2"
     private const val constraintLayoutVersion = "1.1.3"
     private const val androidGradleVersion = "3.4.1"
     private const val roomVersion = "2.1.0-beta01"
+    private const val gsonVersion = "2.8.5"
 
     private const val junitVersion = "4.12"
     private const val runnerVersion = "1.1.1"
@@ -49,12 +51,18 @@ object Config {
         const val appCompat = "androidx.appcompat:appcompat:$appCompatVersion"
         const val coreKtx = "androidx.core:core-ktx:$coreKtxVersion"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+
+        // Lifecycle
         const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$lifecycleExtensionsVersion"
+        const val lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleViewModelKtxVersion"
 
         // Room
         const val roomRuntime = "androidx.room:room-runtime:$roomVersion"
         const val roomCompiler = "androidx.room:room-compiler:$roomVersion"
         const val roomKtx = "androidx.room:room-ktx:$roomVersion"
+
+        // Gson
+        const val gson = "com.google.code.gson:gson:$gsonVersion"
     }
 
     object TestLibs {
