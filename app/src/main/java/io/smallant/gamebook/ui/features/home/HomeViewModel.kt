@@ -1,13 +1,12 @@
-package io.smallant.gamebook.ui.home
+package io.smallant.gamebook.ui.features.home
 
 import android.app.Application
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import io.smallant.gamebook.data.local.database.GamebookDatabase
 import io.smallant.gamebook.data.models.Card
 import io.smallant.gamebook.data.models.Choice
 import io.smallant.gamebook.ui.base.BaseViewModel
+import io.smallant.gamebook.ui.extensions.observeInfinite
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -20,6 +19,10 @@ class HomeViewModel(application: Application): BaseViewModel(application) {
     private val _cardsList: MutableLiveData<List<Card>> = MutableLiveData()
     val cardsList: LiveData<List<Card>>
         get() = _cardsList
+
+    init {
+        listenCards()
+    }
 
     fun saveCards() = viewModelScope.launch {
         val choice1 = Choice().apply {
@@ -40,10 +43,11 @@ class HomeViewModel(application: Application): BaseViewModel(application) {
         }
     }
 
-    fun getCards() = viewModelScope.launch {
-        _cardsList.value = withContext(Dispatchers.IO){
+    private fun listenCards() = viewModelScope.launch {
+        withContext(Dispatchers.IO) {
             cardDao.getCards()
+        }.observeInfinite { list ->
+            _cardsList.value = list
         }
     }
-
 }

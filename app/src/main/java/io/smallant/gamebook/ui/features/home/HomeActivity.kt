@@ -1,4 +1,4 @@
-package io.smallant.gamebook.ui.home
+package io.smallant.gamebook.ui.features.home
 
 import android.os.Bundle
 import android.util.Log
@@ -18,14 +18,12 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         getViewModel().cardsList.observe(this, Observer {result ->
             Log.d("RoomLog", "fetching = $result")
         })
 
         button.setOnClickListener {
             getViewModel().saveCards()
-            getViewModel().getCards()
         }
     }
 }
