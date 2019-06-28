@@ -50,4 +50,8 @@ class HomeViewModel(application: Application): BaseViewModel(application) {
             _cardsList.value = list
         }
     }
+
+    fun deleteCard(cardId: Int) = viewModelScope.launch(Dispatchers.IO) {
+        cardDao.deleteCard(cardId)
+    }
 }

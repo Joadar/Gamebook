@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 abstract class BaseRecyclerAdapter<T: Any>(private val itemClickListener: OnItemClickListener<T>? = null):
     RecyclerView.Adapter<BaseViewHolder<T>>() {
 
-    private val items: ArrayList<T> = arrayListOf()
+    val items: ArrayList<T> = arrayListOf()
 
     override fun getItemCount(): Int = items.size
 

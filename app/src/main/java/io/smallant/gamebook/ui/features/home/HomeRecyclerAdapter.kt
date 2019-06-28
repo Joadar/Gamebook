@@ -18,8 +18,10 @@ class HomeRecyclerAdapter: BaseRecyclerAdapter<Card>() {
 
     class HomeViewHolder(itemView: View): BaseViewHolder<Card>(itemView) {
         override fun bind(item: Card, position: Int) {
-            itemView.label_left.text = item.id.toString()
-            itemView.label_right.text = item.description
+            with(itemView) {
+                label_left.text = item.id.toString()
+                label_right.text = item.description
+            }
         }
     }
 }
