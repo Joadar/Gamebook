@@ -33,6 +33,10 @@ dependencies {
     implementation(Config.Libs.appCompat)
     implementation(Config.Libs.coreKtx)
     implementation(Config.Libs.constraintLayout)
+    implementation(Config.Libs.recyclerView)
+
+    // Material
+    implementation(Config.Libs.material)
 
     // Lifecyce
     implementation(Config.Libs.lifecycleExtensions)
