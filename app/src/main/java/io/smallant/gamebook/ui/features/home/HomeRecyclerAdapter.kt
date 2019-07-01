@@ -17,6 +17,10 @@ class HomeRecyclerAdapter: BaseRecyclerAdapter<Card>() {
     }
 
     class HomeViewHolder(itemView: View): BaseViewHolder<Card>(itemView) {
+
+        val viewForeground = itemView.findViewById<View>(R.id.view_foreground)
+        val viewBackground = itemView.findViewById<View>(R.id.view_background)
+
         override fun bind(item: Card, position: Int) {
             with(itemView) {
                 label_left.text = item.id.toString()

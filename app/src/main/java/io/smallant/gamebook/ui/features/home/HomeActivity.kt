@@ -11,7 +11,7 @@ import io.smallant.gamebook.R
 import io.smallant.gamebook.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class HomeActivity : BaseActivity<HomeViewModel>() {
+class HomeActivity : BaseActivity<HomeViewModel>(), HomeRecyclerItemTouchHelper.HomeRecyclerItemToucheHelperListener {
 
     override fun getLayoutId(): Int = R.layout.activity_main
 
@@ -23,7 +23,7 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         val adapter = HomeRecyclerAdapter()
         recycler.adapter = adapter
         recycler.layoutManager = LinearLayoutManager(this)
-        swipeToDelete()
+        ItemTouchHelper(HomeRecyclerItemTouchHelper(0, ItemTouchHelper.START or ItemTouchHelper.END, this)).attachToRecyclerView(recycler)
 
         getViewModel().cardsList.observe(this, Observer { result ->
             adapter.setItems(result, true)
@@ -34,26 +34,11 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         }
     }
 
-    private fun swipeToDelete() {
-        val itemTouchHelper = ItemTouchHelper(object:ItemTouchHelper.Callback() {
-            override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
-                if (viewHolder is HomeRecyclerAdapter.HomeViewHolder) {
-                    val swipeFlags = ItemTouchHelper.END
-                    return makeMovementFlags(0, swipeFlags)
-                }
-                return 0
-            }
-
-            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean = false
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                if(viewHolder is HomeRecyclerAdapter.HomeViewHolder){
-                    val adapter = recycler.adapter as HomeRecyclerAdapter
-                    getViewModel().deleteCard(adapter.items[viewHolder.adapterPosition].id)
-                    Toast.makeText(this@HomeActivity, "Item deleted", Toast.LENGTH_SHORT).show()
-                }
-            }
-        })
-        itemTouchHelper.attachToRecyclerView(recycler)
+    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int, position: Int) {
+        if(viewHolder is HomeRecyclerAdapter.HomeViewHolder){
+            val adapter = recycler.adapter as HomeRecyclerAdapter
+            getViewModel().deleteCard(adapter.items[viewHolder.adapterPosition].id)
+            Toast.makeText(this@HomeActivity, "Item deleted", Toast.LENGTH_SHORT).show()
+        }
     }
 }
